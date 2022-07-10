@@ -1,0 +1,6 @@
+[submodule "deps/boost/asio"]
+	path = deps/boost/asio
+	url = https://github.com/boostorg/asio.git
+[submodule "deps/boost/beast"]
+	path = deps/boost/beast
+	url = https://github.com/boostorg/beast.git

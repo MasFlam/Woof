@@ -1,0 +1,5 @@
+# Usual cmake build directory
+/build
+
+# Clangd cache (at least from the VS Code extension)
+/.cache
