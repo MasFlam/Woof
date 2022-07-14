@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(woof
 	src/asio_impl.cpp
+	src/case_insensitive.cpp
 	src/default_log.cpp
 	src/parsed_target.cpp
 	src/path_pattern.cpp

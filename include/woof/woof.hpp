@@ -1,7 +1,6 @@
 #ifndef _WOOF_woof_woof_hpp
 #define _WOOF_woof_woof_hpp
 
-#include <cctype>
 #include <charconv>
 #include <functional>
 #include <istream>
@@ -50,30 +49,12 @@ public:
 	virtual void after(Request &, Response &) = 0;
 };
 
-// TODO: deinline these two to eliminate some #includes
-
-// Hash with 64bit FNV1a
 struct CaseInsensitiveHash {
-	size_t operator()(const std::string &s) const {
-		uint64_t hash = 0xcbf29ce484222325;
-		const uint64_t prime = 0x100000001b3;
-		for (char c : s) {
-			hash ^= std::toupper(c);
-			hash *= prime;
-		}
-		return hash;
-	}
+	size_t operator()(const std::string &s) const;
 };
 
 struct CaseInsensitiveEquals {
-	bool operator()(const std::string &a, const std::string &b) const {
-		size_t len = a.size();
-		if (len != b.size()) return false;
-		for (size_t i = 0; i < len; ++i) {
-			if (std::toupper(a[i]) != std::toupper(b[i])) return false;
-		}
-		return true;
-	}
+	bool operator()(const std::string &a, const std::string &b) const;
 };
 
 using HeaderMap = std::unordered_multimap<std::string, std::string, CaseInsensitiveHash, CaseInsensitiveEquals>;
